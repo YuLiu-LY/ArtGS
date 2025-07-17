@@ -41,7 +41,6 @@
 
 <img src="assets/videos/artgs.gif" width="100%" />
 
-
 ## Environment Setup
 We provide all environment configurations in ``requirements.txt``. To install all packages, you can create a conda environment and install the packages as follows: 
 ```bash
@@ -101,6 +100,11 @@ Real-world multi-part objects may have occlusions caused by other objects or the
 **Using Monocular Depth for Training.**
 
 We tried to use monocular depth estimated by [DepthAnythingV2](https://github.com/DepthAnything/Depth-Anything-V2) to train the model, which slightly improves the performance. 
+
+## Real-world Data
+We provide the real-world data scanned through our iPad for the above demo in [HuggingFace](https://huggingface.co/datasets/YuLiu/ArtGS-Dataset). Note, the camera poses and depths provided by the iPad have some errors that may lead to training collapse. Thus, we do not use the depth for supervision. Additionally, as mentioned in Figure A.1 in our paper, clustering-derived part centers may be inaccurate due to sensor noise, occlusion, and varying
+illumination conditions. Manual correction of erroneous part centers before training yields improved results. We also recommend using a point cloud to initialize the single-state Gaussian and using a monocular depth loss to train the model. 
+
 
 ## Useful Tools
 We provide some useful tools for visualization in ``vis_utils``.
